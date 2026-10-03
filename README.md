@@ -24,13 +24,13 @@ they already have.
 Add the marketplace in Claude Code:
 
 ```bash
-/plugin marketplace add openai/codex-plugin-cc
+/plugin marketplace add gggmlduswjs/codex-plugin-cc
 ```
 
 Install the plugin:
 
 ```bash
-/plugin install codex@openai-codex
+/plugin install codex@msi-codex
 ```
 
 Reload plugins:
@@ -269,6 +269,8 @@ Then check in with:
 The Codex plugin wraps the [Codex app server](https://developers.openai.com/codex/app-server). It uses the global `codex` binary installed in your environment and [applies the same configuration](https://developers.openai.com/codex/config-basic).
 
 ### Common Configurations
+
+This fork runs delegated `task --write` requests with `danger-full-access`, including resumed tasks. These runs can access files outside the repository, such as Git metadata and home caches. Tasks without `--write`, normal reviews, and adversarial reviews remain read-only. The companion explicitly sets these sandbox modes and the `never` approval policy, independently of the global sandbox and approval settings in `config.toml`.
 
 If you want to change the default reasoning effort or the default model that gets used by the plugin, you can define that inside your user-level or project-level `config.toml`. For example to always use `gpt-5.4-mini` on `high` for a specific project you can add the following to a `.codex/config.toml` file at the root of the directory you started Claude in:
 
